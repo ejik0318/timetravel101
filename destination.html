@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>Italy Guide</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #000;
+        color: #fff;
+        text-align: center;
+    }
+
+    /* 상단바 */
+    .navbar {
+        width: 100%;
+        background: #000;
+        padding: 15px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        border-bottom: 1px solid #333;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .navbar img {
+        width: 28px;
+        height: auto;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 5px 10px;
+        transition: 0.2s;
+    }
+
+    .navbar a:hover {
+        color: #f4d03f;
+    }
+
+    /* 메인 */
+    .container {
+        margin-top: 150px;
+    }
+
+    select {
+        padding: 8px 12px;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 9px 15px;
+        background: #0f6b2e;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #0b5423;
+    }
+
+    /* 클릭 네모 버튼 */
+    .menu-box {
+        margin-top: 120px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .menu-item {
+        width: 180px;
+        padding: 20px;
+        border: 2px solid #fff;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .menu-item:hover {
+        background: #222;
+    }
+
+    #infoBox {
+        margin-top: 40px;
+        font-size: 20px;
+        min-height: 80px;
+    }
+
+    /* 드롭다운 오류 해결 */
+    .select-container {
+        position: relative;
+        overflow: visible;
+    }
+
+    .select-container select {
+        position: relative;
+        z-index: 10;
+    }
+
+    .select-container option {
+        z-index: 9999;
+    }
+
+    /* 페이지 스크롤바 고정으로 상단바 흔들림 방지 */
+    body { overflow-y: scroll; }
+
+    /* ★ 푸터: 항상 화면 맨 아래 고정 ★ */
+    footer {
+        width: 100%;
+        background: #111;
+        border-top: 1px solid #333;
+        padding: 20px 0;
+        text-align: center;
+        color: #aaa;
+        font-size: 15px;
+
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+</head>
+<body>
+
+<!-- 🔥 절대 변경하지 않은 상단바 -->
+<div class="navbar">
+    <img src="로고4.jpg" alt="Italy Flag" />
+    <a href="#">Destinations</a>
+    <a href="#">Time Travel Rules</a>
+    <a href="#">Survival Guide</a>
+    <a href="#">Traveler’s Gear</a>
+    <a href="#">costume</a>
+</div>
+
+<!-- 메인 -->
+<div class="container">
+    <h2>시대를 선택하고 필요한 정보를 확인해주세요!</h2><br>
+
+    <div style="display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:10px;">
+        <div class="select-container">
+            <select id="regionSelect">
+                <option value="">선택해주세요</option>
+                <option value="rome">과거여행</option>
+                <option value="venice">우주여행</option>
+                <option value="milan">미래여행</option>
+            </select>
+        </div>
+        <button onclick="showRegionInfo()">확인</button>
+    </div>
+
+    <div class="menu-box">
+        <div class="menu-item" onclick="showDetail('history')">과거여행</div>
+        <div class="menu-item" onclick="showDetail('culture')">우주여행</div>
+        <div class="menu-item" onclick="showDetail('food')">미래여행</div>
+    </div>
+
+    <div id="infoBox"></div>
+
+    <!-- 스크롤 가능한 상세 정보 박스 -->
+    <div id="detailBox" style="margin:40px auto; width:80%; max-width:900px; background:#111; border:1px solid #444; border-radius:10px; padding:25px; display:none; overflow-y:auto; max-height:500px; text-align:left;"></div>
+</div>
+
+<!-- ★ 추가된 푸터 — 이제 화면 최하단에 고정됨 ★ -->
+<footer>
+    © 2025 Time Travel Guide. 
+</footer>
+
+<script>
+    function showRegionInfo() {
+        const region = document.getElementById("regionSelect").value;
+        const box = document.getElementById("infoBox");
+        const detailBox = document.getElementById("detailBox");
+
+        const data = {
+            rome: "과거여행을 선택하면 조선시대로 이동하며, 왕궁과 골목의 삶이 공존하던 그 시대의 문화·풍경을 간단히 체험할 수 있습니다.",
+            venice: "우주여행을 선택하면 지구를 벗어나 별과 행성이 펼쳐진 광대한 공간 속에서 신비로운 우주의 장면을 가까이에서 체험할 수 있습니다.",
+            milan: "미래여행을 선택하면 1000년 뒤 고도화된 기술과 변화된 도시 환경 속에서 완전히 다른 일상을 직접 체험할 수 있습니다."
+        };
+
+        const detail = {
+            rome: `
+                <h2>🇮🇹 조선시대로 가는 과거여행 정보</h2>
+                <h3>☀️ 날씨 정보</h3>
+                <p>조선시대는 사계절이 뚜렷하고 여름은 무덥고 겨울은 한파가 이어지는 전통 한반도 기후를 지녔습니다.</p>
+                <h3>📌 여행 팁</h3>
+                <ul>
+                    <li>한복이나 편한 복장으로 이동하세요.</li>
+                    <li>궁궐·시장 등 주요 장소 동선을 미리 파악하세요.</li>
+                    <li>예절 문화가 엄격했던 시대임을 기억하세요.</li>
+                </ul>
+            `,
+            venice: `
+                <h2>🇮🇹 우주로 가는 우주여행 정보</h2>
+                <h3>☀️ 날씨 정보</h3>
+                <p>우주는 대기가 없어 기온 변화가 극단적이며 태양풍과 방사선의 영향이 강합니다.</p>
+                <h3>📌 여행 팁</h3>
+                <ul>
+                    <li>우주복과 장비 점검은 필수입니다.</li>
+                    <li>무중력 환경에서의 움직임을 미리 숙지하세요.</li>
+                    <li>태양광·방사선 노출에 대비하세요.</li>
+                </ul>
+            `,
+            milan: `
+                <h2>🇮🇹 1000년 뒤 미래로 가는 미래여행 정보</h2>
+                <h3>☀️ 날씨 정보</h3>
+                <p>미래는 기후 제어 기술이 발전해 안정적인 날씨가 유지되는 환경입니다.</p>
+                <h3>📌 여행 팁</h3>
+                <ul>
+                    <li>기술 기반 시설을 미리 숙지하세요.</li>
+                    <li>호버 이동·순간이동 등 미래 교통 방식을 익혀두세요.</li>
+                    <li>환경 변화에 대비해 안내 시스템을 활용하세요.</li>
+                </ul>
+            `
+        };
+
+        box.innerHTML = data[region] || "시대를 선택해주세요.";
+        detailBox.style.display = "block";
+        detailBox.innerHTML = detail[region] || "<p style='color:#aaa'>상세 정보를 보려면 시대를 선택하세요.</p>";
+    }
+
+    function showDetail(type) {
+        const box = document.getElementById("infoBox");
+        const details = {
+            history: "과거여행을 선택하면 조선시대로 이동하며, 왕궁과 골목의 삶이 공존하던 그 시대의 문화·풍경을 체험할 수 있습니다.",
+            culture: "우주여행을 선택하면 지구를 벗어나 별·행성·성운을 가까이에서 마주하는 신비로운 장면을 탐험할 수 있습니다.",
+            food: "미래여행을 선택하면 1000년 뒤 초고도 기술 문명 속에서 완전히 달라진 환경을 만나볼 수 있습니다."
+        };
+        box.innerHTML = details[type];
+    }
+</script>
+<!-- 상단바 (절대 수정 금지 / 링크 방식만 통일) -->
+<div class="navbar">
+    <img src="로고4.jpg" alt="Italy Flag" onclick="location.href='index.html'"/>
+    <a href="destination.html">Destinations</a>
+    <a href="rules.html">Time Travel Rules</a>
+    <a href="survive.html">Survival Guide</a>
+    <a href="gear.html">Traveler’s Gear</a>
+    <a href="costume.html">costume</a>
+</div>
+
+</body>
+</html>
+

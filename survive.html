@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>Italy Guide</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-y: scroll; /* 상단바 흔들림 방지 */
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #000;
+        color: #fff;
+        overflow: hidden;
+    }
+
+    /* 🔥 절대 수정 금지 - 기존 상단바 */
+    .navbar {
+        width: 100%;
+        background: #000;
+        padding: 15px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        border-bottom: 1px solid #333;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .navbar img {
+        width: 28px;
+        height: auto;
+        cursor: pointer; /* 클릭 가능 표시만 추가 (스타일 변화 아님) */
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 5px 10px;
+        transition: 0.2s;
+    }
+    .navbar a:hover {
+        color: #f4d03f;
+    }
+
+    /* ⭐ 중앙 슬라이더 */
+    .slider-wrapper {
+        width: 100%;
+        height: calc(100vh - 150px - 80px);
+        margin-top: 150px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slider {
+        display: flex;
+        height: 100%;
+        transition: transform 0.6s ease;
+    }
+
+    .slide {
+        flex: 0 0 100%;
+        text-align: center;
+        padding: 40px;
+    }
+
+    .section-title {
+        font-size: 35px;
+        margin-bottom: 25px;
+        font-weight: bold;
+    }
+
+    .slide img {
+        width: 380px;
+        height: auto;
+        border-radius: 12px;
+        border: 2px solid #444;
+        margin-bottom: 20px;
+    }
+
+    .description {
+        font-size: 18px;
+        line-height: 1.6;
+        width: 60%;
+        margin: 0 auto;
+        color: #ddd;
+    }
+
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 55px;
+        cursor: pointer;
+        color: #fff;
+        user-select: none;
+        padding: 10px;
+        z-index: 999;
+    }
+
+    .arrow-left { left: 5%; }
+    .arrow-right { right: 5%; }
+
+    .arrow:hover {
+        color: #f4d03f;
+    }
+
+    /* 기존 푸터 */
+    .footer {
+        width: 100%;
+        text-align: center;
+        padding: 25px 0;
+        background: #000;
+        border-top: 1px solid #333;
+        font-size: 14px;
+        color: #aaa;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- 상단바 (절대 수정 금지 / 이동 기능만 추가) -->
+<div class="navbar">
+    <img src="로고4.jpg" alt="Italy Flag" onclick="location.href='index.html'"/>
+    <a href="destination.html">Destinations</a>
+    <a href="rules.html">Time Travel Rules</a>
+    <a href="survive.html">Survival Guide</a>
+    <a href="gear.html">Traveler’s Gear</a>
+    <a href="costume.html">costume</a>
+</div>
+
+<!-- 중앙 슬라이더 -->
+<div class="slider-wrapper">
+    <div class="arrow arrow-left" onclick="moveSlide(-1)">&#10094;</div>
+    <div class="arrow arrow-right" onclick="moveSlide(1)">&#10095;</div>
+
+    <div class="slider" id="slider">
+
+        <!-- 과거시대 -->
+        <div class="slide">
+            <div class="section-title">Joseon Dynasty Survival Guide</div>
+            <img src="생존1.png">
+            <div class="description">
+                “조선 시대는 외모·복장·예절이 신분과 안전을 결정하는 시대입니다.  
+                낯선 복장은 ‘의심’과 ‘위협’을 동시에 부르고, 사소한 무례는 법적 문제가 될 수 있습니다.  
+                기본 한복 착용은 신분 위장을 돕고, 지역에 자연스럽게 동화되는 가장 확실한 생존 전략입니다.  
+                <br><br>
+                ✔ 조용한 말투 유지  
+                ✔ 서당·양반가 주변 접근 금지  
+                ✔ 사진·소리·빛이 나는 물건 노출 절대 금물  
+                <br><br>
+                시대에 어울리는 자가 결국 가장 오래 살아남습니다.”
+            </div>
+        </div>
+
+        <!-- 우주시대 -->
+        <div class="slide">
+            <div class="section-title">Universe Era Survival Guide</div>
+            <img src="생존2.png">
+            <div class="description">
+                “우주는 ‘환경 전체가 즉사 위험’입니다.  
+                공기, 중력, 방사선, 미세 파편, 초저온 — 어느 하나도 인간에게 안전하지 않습니다.  
+                우주복은 단순한 옷이 아니라, ‘이동식 생명 유지 장치(Life Support Unit)’입니다.
+                <br><br>
+                ✔ 산소·기압 자동 조절  
+                ✔ 방사선 차단 레이어  
+                ✔ HUD 기반 위험 탐지 시스템  
+                ✔ 미세 유성체 충돌 방어막  
+                <br><br>
+                우주에서는 장비가 곧 생명입니다. 장비가 멈추면 당신도 멈춥니다.”
+            </div>
+        </div>
+
+        <!-- 미래시대 -->
+        <div class="slide">
+            <div class="section-title">Future Era Survival Guide</div>
+            <img src="생존3.png">
+            <div class="description">
+                “1000년 후의 문명은 기술·환경·사회 시스템이 현재와 전혀 다르게 작동합니다.  
+                의료, 기후, 치안, 정보 접근 방식까지 완전히 새로운 규칙이 적용되며  
+                미래복은 그 시대의 ‘표준 생존 장비’입니다.
+                <br><br>
+                ✔ 복합 필터가 미세 독성 공기 차단  
+                ✔ 개인 신원·권한 인증 내장  
+                ✔ 실시간 위험 분석 AI 탑재  
+                ✔ 공격·사이버 침입 자동 방어
+                <br><br>
+                미래 시대는 편리하지만 결코 안전하지 않습니다.  
+                당신을 보호해 주는 건 ‘기술을 이해하는 당신’ 뿐입니다.”
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 푸터 -->
+<div class="footer">
+    © 2025 Time Travel Guide. 
+</div>
+
+<script>
+let currentIndex = 0;
+
+function moveSlide(direction) {
+    const slider = document.getElementById("slider");
+    const totalSlides = slider.children.length;
+
+    currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+

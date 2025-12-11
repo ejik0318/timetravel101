@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>Italy Guide</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #000;
+        color: #fff;
+        overflow-y: scroll;
+    }
+
+    /* 🔥 절대 수정 금지 - 기존 상단바 */
+    .navbar {
+        width: 100%;
+        background: #000;
+        padding: 15px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        border-bottom: 1px solid #333;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .navbar img {
+        width: 28px;
+        height: auto;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 5px 10px;
+        transition: 0.2s;
+    }
+    .navbar a:hover {
+        color: #f4d03f;
+    }
+
+    /* 🔻 콘텐츠 전체 섹션 */
+    .content-section {
+        margin-top: 150px;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+        font-weight: bold;
+    }
+
+    /* 이미지 2개 가로 정렬 */
+    .image-row {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin-bottom: 20px;
+    }
+
+    /* 이미지 스타일 + 애니메이션 */
+    .image-row img {
+        width: 40%;
+        max-width: 280px;
+        border-radius: 10px;
+        border: 2px solid #444;
+        position: relative;
+        transition: transform 0.35s ease, filter 0.35s ease;
+    }
+
+    /* 호버 애니메이션 🔥 */
+    .image-row img:hover {
+        transform: scale(1.08);
+        filter: brightness(0.35);
+    }
+
+    /* X 표시 애니메이션 */
+    .image-row img:hover::after {
+        content: "X";
+        position: absolute;
+        color: red;
+        font-size: 50px;
+        font-weight: bold;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: fadeX 0.3s ease forwards;
+    }
+
+    @keyframes fadeX {
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    /* 설명글 */
+    .description {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #ddd;
+        margin-top: 10px;
+    }
+
+    /* ⭐ 추가된 푸터 */
+    .footer {
+        width: 100%;
+        text-align: center;
+        padding: 25px 0;
+        background: #000;
+        border-top: 1px solid #333;
+        margin-top: 80px;
+        font-size: 14px;
+        color: #aaa;
+    }
+</style>
+</head>
+<body>
+
+<!-- 🔥 수정 금지 상단바 -->
+<div class="navbar">
+    <img src="로고4.jpg" alt="Italy Flag" />
+    <a href="#">Destinations</a>
+    <a href="#">Time Travel Rules</a>
+    <a href="#">Survival Guide</a>
+    <a href="#">Traveler’s Gear</a>
+    <a href="#">costume</a>
+</div>
+
+
+<!-- ⭐ 1번 섹션 카드 -->
+<div class="content-section">
+    <div class="section-title">Joseon Dynasty</div>
+
+    <div class="card-box">
+        <div class="image-row">
+            <img src="여자옷.png">
+            <img src="남자옷과거.png">
+        </div>
+
+        <div class="description">
+            “조선시대에 도착한 순간, 현대 복장은 모든 시선을 끄는 오류가 됩니다.  
+            시대와 자연스럽게 어우러지고 안전하게 움직이기 위해, 한복 착용은 필수입니다.”
+        </div>
+    </div>
+</div>
+
+
+<!-- ⭐ 2번 섹션 카드 -->
+<div class="content-section">
+    <div class="section-title">Universe</div>
+
+    <div class="card-box">
+        <div class="image-row">
+            <img src="우주여자옷.png">
+            <img src="우주여자옷.png">
+        </div>
+
+        <div class="description">
+            “우주에서는 공기, 기압, 온도 모든 환경이 인간에게 치명적이기 때문에  
+            스스로 생존 환경을 만들어주는 우주복은 선택이 아닌 필수 장비입니다.”
+        </div>
+    </div>
+</div>
+
+
+<!-- ⭐ 3번 섹션 카드 -->
+<div class="content-section">
+    <div class="section-title">Future Era</div>
+
+    <div class="card-box">
+        <div class="image-row">
+            <img src="미래여자옷.png">
+            <img src="미래남자옷.png">
+        </div>
+
+        <div class="description">
+            “1000년 뒤의 환경은 현재와 완전히 다른 기준 아래에서 운영되기 때문에,  
+            미래복은 호흡·보안·정보 접근까지 모든 기능을 통합한 필수 착용 장비입니다.”
+        </div>
+    </div>
+</div>
+
+<!-- ⭐ 추가된 푸터 -->
+<div class="footer">
+    © 2025 Time Travel Guide. 
+</div>
+<!-- 상단바 (절대 수정 금지 / 링크 방식만 통일) -->
+<div class="navbar">
+    <img src="로고4.jpg" alt="Italy Flag" onclick="location.href='index.html'"/>
+    <a href="destination.html">Destinations</a>
+    <a href="rules.html">Time Travel Rules</a>
+    <a href="survive.html">Survival Guide</a>
+    <a href="gear.html">Traveler’s Gear</a>
+    <a href="costume.html">costume</a>
+</div>
+
+</body>
+</html>
+
+

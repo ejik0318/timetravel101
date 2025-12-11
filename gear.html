@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>Time Travel Guide</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-y: scroll; /* 상단바 흔들림 방지 */
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #000;
+        color: #fff;
+        overflow-x: hidden;
+    }
+
+    /* 🔥 절대 수정 금지 - 기존 상단바 */
+    .navbar {
+        width: 100%;
+        background: #000;
+        padding: 15px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        border-bottom: 1px solid #333;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .navbar img {
+        width: 28px;
+        height: auto;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 5px 10px;
+        transition: 0.2s;
+    }
+    .navbar a:hover {
+        color: #f4d03f;
+    }
+
+    /* ==========================
+       중앙 이미지 6개 구성
+    ==========================*/
+    .content-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 170px; 
+        padding-bottom: 140px;
+    }
+
+    .grid {
+        width: 65%;
+        max-width: 1100px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+        justify-items: center;
+    }
+
+    /* 🔥 이미지 크기 */
+    .item {
+        position: relative;
+        width: 100%;
+        max-width: 260px;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: 0.4s;
+    }
+
+    /* 호버 시 블러 효과 */
+    .item:hover img {
+        filter: blur(3px) brightness(0.4);
+        transform: scale(1.08);
+    }
+
+    /* 텍스트 */
+    .text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        opacity: 0;
+        text-align: center;
+        transition: 0.4s;
+        line-height: 1.4;
+        padding: 0 10px;
+    }
+
+    .item:hover .text {
+        opacity: 1;
+    }
+
+    /* 🔥 절대 수정 금지 - 기존 푸터 */
+    .footer {
+        width: 100%;
+        text-align: center;
+        padding: 25px 0;
+        background: #000;
+        border-top: 1px solid #333;
+        font-size: 14px;
+        color: #aaa;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- 상단바 -->
+<div class="navbar">
+    <img src="로고4.jpg" alt="Italy Flag" />
+    <a href="#">Destinations</a>
+    <a href="#">Time Travel Rules</a>
+    <a href="#">Survival Guide</a>
+    <a href="#">Traveler’s Gear</a>
+    <a href="#">costume</a>
+</div>
+
+<!-- 중앙 이미지 6개 -->
+<div class="content-wrapper">
+    <div class="grid">
+
+        <div class="item">
+            <img src="지도.png">
+            <div class="text">방수 코팅 지역 상세 지도</div>
+        </div>
+
+        <div class="item">
+            <img src="장비2.png">
+            <div class="text">손 소독제</div>
+        </div>
+
+        <div class="item">
+            <img src="나침반.png">
+            <div class="text">나침반</div>
+        </div>
+
+        <div class="item">
+            <img src="태양광.png">
+            <div class="text">태양광 충전식 휴대용 배터리 팩</div>
+        </div>
+
+        <div class="item">
+            <img src="에어팟.png">
+            <div class="text">초소형 디지털 데이터 저장 장치</div>
+        </div>
+
+        <div class="item">
+            <img src="바.png">
+            <div class="text">고농축 비상 식량/영양 바</div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 푸터 -->
+<div class="footer">
+    © 2025 Time Travel Guide. 
+</div>
+
+
+
+<!-- 상단바 (절대 수정 금지 / 링크 방식만 통일) -->
+<div class="navbar">
+    <img src="로고4.jpg" alt="Italy Flag" onclick="location.href='index.html'"/>
+    <a href="destination.html">Destinations</a>
+    <a href="rules.html">Time Travel Rules</a>
+    <a href="survive.html">Survival Guide</a>
+    <a href="gear.html">Traveler’s Gear</a>
+    <a href="costume.html">costume</a>
+</div>
+</script>
+
+</body>
+</html>
+
+
+
+
