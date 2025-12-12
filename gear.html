@@ -50,6 +50,7 @@
         padding: 5px 10px;
         transition: 0.2s;
     }
+
     .navbar a:hover {
         color: #f4d03f;
     }
@@ -130,6 +131,113 @@
         bottom: 0;
         left: 0;
     }
+
+    /* ────────────────────────────────
+       ⭐⭐ 반응형 웹 미디어쿼리 ⭐⭐
+       ──────────────────────────────── */
+
+    /* 모바일 (최대 480px) */
+    @media (max-width: 480px) {
+        .content-wrapper {
+            margin-top: 150px;
+            padding-bottom: 120px;
+        }
+
+        .grid {
+            width: 95%;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .item {
+            max-width: 100%;
+        }
+
+        .text {
+            font-size: 14px;
+            padding: 0 5px;
+        }
+
+        .navbar {
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px 0;
+        }
+
+        .navbar a {
+            font-size: 12px;
+            padding: 3px 5px;
+        }
+
+        .footer {
+            font-size: 12px;
+            padding: 10px 0;
+        }
+    }
+
+    /* 태블릿 (481px ~ 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+        .content-wrapper {
+            margin-top: 160px;
+            padding-bottom: 130px;
+        }
+
+        .grid {
+            width: 90%;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .item {
+            max-width: 90%;
+        }
+
+        .text {
+            font-size: 16px;
+        }
+
+        .navbar a {
+            font-size: 14px;
+            padding: 4px 6px;
+        }
+
+        .footer {
+            font-size: 13px;
+            padding: 15px 0;
+        }
+    }
+
+    /* 데스크탑 (769px 이상) */
+    @media (min-width: 769px) {
+        .content-wrapper {
+            margin-top: 170px;
+            padding-bottom: 140px;
+        }
+
+        .grid {
+            width: 65%;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .item {
+            max-width: 260px;
+        }
+
+        .text {
+            font-size: 18px;
+        }
+
+        .navbar a {
+            font-size: 18px;
+        }
+
+        .footer {
+            font-size: 14px;
+            padding: 25px 0;
+        }
+    }
+
 </style>
 </head>
 
@@ -187,9 +295,7 @@
     © 2025 Time Travel Guide. 
 </div>
 
-
-
-<!-- 상단바 (절대 수정 금지 / 링크 방식만 통일) -->
+<!-- 상단바 복제본 (링크 통일) -->
 <div class="navbar">
     <img src="로고4.jpg" alt="Italy Flag" onclick="location.href='index.html'"/>
     <a href="destination.html">Destinations</a>
@@ -198,11 +304,6 @@
     <a href="gear.html">Traveler’s Gear</a>
     <a href="costume.html">costume</a>
 </div>
-</script>
 
 </body>
 </html>
-
-
-
-
