@@ -15,6 +15,7 @@
         background: #000;
         color: #fff;
         text-align: center;
+        overflow-y: scroll; /* 상단바 흔들림 방지 */
     }
 
     /* 상단바 */
@@ -50,7 +51,7 @@
         color: #f4d03f;
     }
 
-    /* 메인 */
+    /* 메인 컨테이너 */
     .container {
         margin-top: 150px;
     }
@@ -119,10 +120,22 @@
         z-index: 9999;
     }
 
-    /* 페이지 스크롤바 고정으로 상단바 흔들림 방지 */
-    body { overflow-y: scroll; }
+    /* 상세 정보 박스 */
+    #detailBox {
+        margin: 40px auto;
+        width: 80%;
+        max-width: 900px;
+        background: #111;
+        border: 1px solid #444;
+        border-radius: 10px;
+        padding: 25px;
+        display: none;
+        overflow-y: auto;
+        max-height: 500px;
+        text-align: left;
+    }
 
-    /* ★ 푸터: 항상 화면 맨 아래 고정 ★ */
+    /* 푸터 */
     footer {
         width: 100%;
         background: #111;
@@ -136,78 +149,99 @@
         left: 0;
     }
 
-
     /* ────────────────────────────────
-       ⭐⭐  아래부터 미디어쿼리 추가 부분 ⭐⭐
+       ⭐⭐ 반응형 웹 미디어쿼리 ⭐⭐
        ──────────────────────────────── */
     
-    /* 모바일 (최대 768px) */
-    @media (max-width: 768px) {
-
+    /* 모바일 (최대 480px) */
+    @media (max-width: 480px) {
         .navbar {
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px 0;
+        }
+        .navbar a {
+            font-size: 12px;
+            padding: 3px 5px;
+        }
+        select {
+            font-size: 14px;
+            padding: 6px 10px;
+        }
+        button {
+            font-size: 14px;
+            padding: 6px 10px;
+            margin-left: 5px;
+        }
+        .menu-box {
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 60px;
+        }
+        .menu-item {
+            width: 90%;
+            max-width: 250px;
+            padding: 15px;
+            font-size: 14px;
+            margin: 0 auto;
+        }
+        #infoBox {
+            font-size: 16px;
+        }
+        #detailBox {
+            width: 95%;
+            max-height: 350px;
+            padding: 15px;
+        }
+        footer {
+            font-size: 12px;
+            padding: 10px 0;
+        }
+    }
+
+    /* 태블릿 (481px ~ 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+        .navbar {
+            gap: 12px;
             padding: 12px 0;
         }
-
         .navbar a {
             font-size: 14px;
             padding: 4px 6px;
         }
-
         .menu-box {
-            flex-direction: column;
+            flex-direction: row;
+            flex-wrap: wrap;
             gap: 15px;
-            margin-top: 60px;
+            margin-top: 80px;
         }
-
         .menu-item {
-            width: 80%;
+            width: 45%;
             max-width: 300px;
-            margin: 0 auto;
+            padding: 18px;
         }
-
         #detailBox {
             width: 90%;
-            max-height: 400px;
-            padding: 15px;
-        }
-
-        footer {
-            font-size: 13px;
-            padding: 12px 0;
+            max-height: 450px;
         }
     }
 
-    /* 아주 작은 모바일 (최대 480px) */
-    @media (max-width: 480px) {
-
-        .navbar {
-            flex-wrap: wrap;
-            gap: 10px;
+    /* 데스크탑 (769px 이상) */
+    @media (min-width: 769px) {
+        .menu-box {
+            flex-direction: row;
+            gap: 20px;
         }
-
-        .navbar a {
-            font-size: 12px;
-        }
-
-        select {
-            font-size: 14px;
-        }
-
-        button {
-            font-size: 14px;
-            padding: 7px 12px;
-        }
-
-        #infoBox {
-            font-size: 16px;
-        }
-
         .menu-item {
-            padding: 15px;
-            font-size: 14px;
+            width: 180px;
+            padding: 20px;
+        }
+        #detailBox {
+            width: 80%;
+            max-height: 500px;
         }
     }
+
 </style>
 </head>
 <body>
@@ -245,8 +279,7 @@
     </div>
 
     <div id="infoBox"></div>
-
-    <div id="detailBox" style="margin:40px auto; width:80%; max-width:900px; background:#111; border:1px solid #444; border-radius:10px; padding:25px; display:none; overflow-y:auto; max-height:500px; text-align:left;"></div>
+    <div id="detailBox"></div>
 </div>
 
 <footer>
@@ -317,7 +350,7 @@
     }
 </script>
 
-<!-- 상단바 복제본 (유지 요청에 따라 그대로 둠) -->
+<!-- 상단바 복제본 -->
 <div class="navbar">
     <img src="로고4.jpg" alt="Italy Flag" onclick="location.href='index.html'"/>
     <a href="destination.html">Destinations</a>
