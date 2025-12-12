@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>Italy Guide</title>
+
 <style>
     * {
         margin: 0;
@@ -32,6 +33,7 @@
         top: 0;
         left: 0;
         z-index: 1000;
+        flex-wrap: wrap; /* 반응형 시 줄바꿈 허용 */
     }
 
     .navbar img {
@@ -54,6 +56,7 @@
     /* 메인 컨테이너 */
     .container {
         margin-top: 150px;
+        padding-bottom: 140px; /* 푸터 공간 확보 */
     }
 
     select {
@@ -84,6 +87,7 @@
         display: flex;
         justify-content: center;
         gap: 20px;
+        flex-wrap: wrap;
     }
 
     .menu-item {
@@ -149,14 +153,13 @@
         left: 0;
     }
 
-    /* ────────────────────────────────
-       ⭐⭐ 반응형 웹 미디어쿼리 ⭐⭐
-       ──────────────────────────────── */
+    /* ============================
+       반응형 웹 미디어쿼리
+    ============================ */
     
     /* 모바일 (최대 480px) */
     @media (max-width: 480px) {
         .navbar {
-            flex-wrap: wrap;
             gap: 8px;
             padding: 10px 0;
         }
@@ -241,7 +244,6 @@
             max-height: 500px;
         }
     }
-
 </style>
 </head>
 <body>
