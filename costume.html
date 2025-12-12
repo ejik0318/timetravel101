@@ -32,7 +32,6 @@
         top: 0;
         left: 0;
         z-index: 1000;
-        flex-wrap: wrap; /* 모바일 줄바꿈 허용 */
     }
 
     .navbar img {
@@ -70,21 +69,40 @@
         justify-content: center;
         gap: 25px;
         margin-bottom: 20px;
-        flex-wrap: wrap; /* 모바일에서 자동 줄바꿈 */
     }
 
-    /* 이미지 스타일 + 호버 애니메이션 */
+    /* 이미지 스타일 + 애니메이션 */
     .image-row img {
         width: 40%;
         max-width: 280px;
         border-radius: 10px;
         border: 2px solid #444;
+        position: relative;
         transition: transform 0.35s ease, filter 0.35s ease;
     }
 
+    /* 호버 애니메이션 🔥 */
     .image-row img:hover {
         transform: scale(1.08);
         filter: brightness(0.35);
+    }
+
+    /* X 표시 애니메이션 */
+    .image-row img:hover::after {
+        content: "X";
+        position: absolute;
+        color: red;
+        font-size: 50px;
+        font-weight: bold;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: fadeX 0.3s ease forwards;
+    }
+
+    @keyframes fadeX {
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
 
     /* 설명글 */
@@ -106,62 +124,6 @@
         font-size: 14px;
         color: #aaa;
     }
-
-    /* ────────────────────────────────
-       ⭐⭐ 반응형 웹 (모바일) ⭐⭐
-       ──────────────────────────────── */
-    @media (max-width: 480px) {
-        .navbar a {
-            font-size: 14px;
-            padding: 3px 6px;
-        }
-
-        .section-title {
-            font-size: 22px;
-        }
-
-        .image-row img {
-            width: 80%; /* PC 대비 2/3~3/4 정도 크기 */
-            max-width: 200px;
-        }
-
-        .description {
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
-        .footer {
-            font-size: 12px;
-            padding: 15px 0;
-        }
-    }
-
-    /* 태블릿 */
-    @media (min-width: 481px) and (max-width: 768px) {
-        .navbar a {
-            font-size: 16px;
-            padding: 4px 8px;
-        }
-
-        .section-title {
-            font-size: 24px;
-        }
-
-        .image-row img {
-            width: 50%;
-            max-width: 240px;
-        }
-
-        .description {
-            font-size: 16px;
-        }
-
-        .footer {
-            font-size: 13px;
-            padding: 20px 0;
-        }
-    }
-
 </style>
 </head>
 <body>
@@ -175,6 +137,7 @@
     <a href="#">Traveler’s Gear</a>
     <a href="#">costume</a>
 </div>
+
 
 <!-- ⭐ 1번 섹션 카드 -->
 <div class="content-section">
@@ -193,6 +156,7 @@
     </div>
 </div>
 
+
 <!-- ⭐ 2번 섹션 카드 -->
 <div class="content-section">
     <div class="section-title">Universe</div>
@@ -209,6 +173,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- ⭐ 3번 섹션 카드 -->
 <div class="content-section">
@@ -231,7 +196,6 @@
 <div class="footer">
     © 2025 Time Travel Guide. 
 </div>
-
 <!-- 상단바 (절대 수정 금지 / 링크 방식만 통일) -->
 <div class="navbar">
     <img src="로고4.jpg" alt="Italy Flag" onclick="location.href='index.html'"/>
